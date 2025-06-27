@@ -27,6 +27,8 @@ def get_video():
         # This will be returned if 'default' or any other unknown feeling is sent
         return jsonify({'error': 'Invalid feeling selected'}), 400
 
+# --- Main execution block ---
 if __name__ == '__main__':
-    app.run(debug=True)
-
+    port = int(os.environ.get('PORT', 5000)) 
+    _ensure_database_schema() # Ensure schema on startup
+    app.run(debug=debug_mode, host='0.0.0.0', port=port) # Use 0.0.0.0 for Render deployment
