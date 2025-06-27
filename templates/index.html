@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Tayo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz Tayo</h1>
+
+        <div class="quiz-box">
+            <h2>Alam mo yung Feeling na?</h2>
+            <div class="options">
+      <label>
+                    <input type="radio" name="feeling" value="default" onchange="handleButtonClick(this.value)"> Default
+                </label>
+
+                <label>
+                    <input type="radio" name="feeling" value="greatest" onchange="handleButtonClick(this.value)"> Greatest
+                </label>
+                <label>
+                    <input type="radio" name="feeling" value="gustong" onchange="handleButtonClick(this.value)"> Gustong
+                </label>
+                <label>
+                    <input type="radio" name="feeling" value="miss" onchange="handleButtonClick(this.value)"> Miss
+                </label>
+            </div>
+
+            <div id="videoContainer">
+                <video id="dynamicVideoPlayer" class="hidden-video" controls>
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

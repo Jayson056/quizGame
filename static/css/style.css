@@ -1,0 +1,209 @@
+/* General Body and Container Styling */
+body {
+    font-family: 'Arial', sans-serif; /* A more common sans-serif font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px; /* Add some padding to avoid content touching screen edges */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.container {
+    text-align: center;
+    width: 100%; /* Take full width on smaller screens */
+    max-width: 700px; /* Max width for larger screens to prevent it from becoming too wide */
+    padding: 0; /* Container itself won't have padding, quiz-box will */
+}
+
+/* Header Styling */
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.8em; /* Adjust font size for better readability */
+}
+
+h2 {
+    color: #555;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+/* Quiz Box Styling (with gradient border) */
+.quiz-box {
+    background-image: linear-gradient(to right, #8A2BE2, #FF1493, #FFD700, #00BFFF);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block; /* Essential for gradient border to wrap content */
+    margin-top: 20px;
+    box-sizing: border-box; /* Include padding in element's total width and height */
+    width: 100%; /* Take full width within its container */
+}
+
+h3 {
+    color: white;
+    margin-bottom: 25px;
+    font-size: 1.3em;
+}
+
+/* --- Radio Button Options Styling (UPDATED FOR HORIZONTAL LAYOUT) --- */
+.options {
+    display: flex; /* Use Flexbox for horizontal alignment */
+    justify-content: space-around; /* Distribute items evenly with space around them */
+    flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+    gap: 15px; /* Space between flex items */
+    margin-bottom: 20px; /* Add some space below the options */
+}
+
+.options label {
+    /* flex-grow: 1; */ /* Optional: makes labels grow to fill space, might stretch them too much */
+    display: flex; /* Make label itself a flex container for its content */
+    align-items: center; /* Vertically align the radio button and text */
+    font-size: 1.1em;
+    color: white;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2); /* A subtle background for each button */
+    padding: 10px 20px;
+    border-radius: 20px; /* More rounded pill shape */
+    transition: background-color 0.3s ease;
+    white-space: nowrap; /* Prevent text from wrapping inside the label */
+}
+
+.options label:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.options input[type="radio"] {
+    margin-right: 8px; /* Slightly less margin for tighter packing */
+    transform: scale(1.2); /* Make radio buttons slightly larger */
+    flex-shrink: 0; /* Prevent radio button from shrinking */
+}
+
+/* Submit Button Styling */
+.submit-button {
+    background-color: #ff6347; /* Tomato */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 20px; /* Still need margin if options are above */
+    transition: background-color 0.3s ease;
+    width: auto; /* Allow button to size itself */
+    min-width: 120px; /* Ensure a minimum width */
+}
+
+.submit-button:hover {
+    background-color: #e0533c;
+}
+
+/* Video Container and Player Styling */
+#videoContainer {
+    margin-top: 30px;
+    background-color: black; /* To match the image's video background */
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 200px; /* Give some space even if no video is shown */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Hide anything that spills outside */
+    position: relative; /* For responsive video padding trick */
+    padding-bottom: 56.25%; /* 16:9 aspect ratio (height / width * 100) */
+    height: 0; /* Reset height */
+}
+
+#dynamicVideoPlayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensures the video fits within the container while maintaining aspect ratio */
+    background-color: black; /* Background for letterboxing if video aspect ratio differs */
+}
+
+.hidden-video {
+    display: none;
+}
+
+.visible-video {
+    display: block;
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* For screens smaller than 600px (typical phone portrait) */
+@media (max-width: 600px) {
+    body {
+        padding: 10px; /* Reduce overall padding for smaller screens */
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .quiz-box {
+        padding: 20px; /* Reduce quiz box padding */
+    }
+
+    h3 {
+        font-size: 1.1em;
+    }
+
+    /* Adjust options for small screens to potentially stack or wrap better */
+    .options {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        gap: 10px; /* Smaller gap when stacked */
+        align-items: stretch; /* Make stacked items fill available width */
+    }
+
+    .options label {
+        font-size: 1em;
+        padding: 12px 15px; /* Adjust padding for stacked buttons */
+        justify-content: center; /* Center content within each button */
+    }
+
+    .options input[type="radio"] {
+        transform: scale(1.1); /* Slightly smaller radio buttons */
+    }
+
+    .submit-button {
+        padding: 10px 20px;
+        font-size: 1em;
+        min-width: unset; /* Remove min-width on small screens */
+    }
+
+    #videoContainer {
+        min-height: 150px; /* Smaller min-height for video container */
+        padding-bottom: 56.25%; /* Maintain aspect ratio for video player */
+    }
+}
+
+/* For screens smaller than 400px (very small phones) */
+@media (max-width: 400px) {
+    .quiz-box {
+        padding: 15px;
+    }
+
+    .options label {
+        font-size: 0.95em;
+        /* No need for margin-bottom here due to flex gap */
+    }
+
+    h1 {
+        font-size: 1.3em;
+    }
+
+    h2 {
+        font-size: 1em;
+    }
+}
